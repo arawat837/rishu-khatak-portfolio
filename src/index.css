@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --canvas: #F6F2EA;
+    --surface: #FBF9F5;
+    --ink: #17212B;
+    --ink-muted: #66717A;
+    --accent-teal: #477B76;
+    --accent-coral: #C9826F;
+    --line: #DDD8CE;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--canvas);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #F0ECE4;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #C8C1B4;
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A8A092;
+  }
+}
+
+/* Subtle background grain simulation */
+.bg-grain {
+  background-image: radial-gradient(rgba(23, 33, 43, 0.035) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.bg-grain-dense {
+  background-image: radial-gradient(rgba(23, 33, 43, 0.05) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Editorial typography & rules */
+.font-editorial-serif {
+  font-family: "Playfair Display", "Cormorant Garamond", Georgia, serif;
+}
+
+.font-editorial-sans {
+  font-family: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+}
+
+/* Accessible focus ring */
+*:focus-visible {
+  outline: 2px solid #477B76;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
