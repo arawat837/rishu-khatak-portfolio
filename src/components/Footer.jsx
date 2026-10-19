@@ -27,7 +27,7 @@ export const Footer = () => {
               </div>
             </div>
             <p className="text-xs sm:text-sm text-canvas/70 max-w-sm leading-relaxed mb-6 font-normal">
-              Synthesizing analytical rigor, structured campus leadership, and people-focused HR strategy to build collaborative workplaces.
+              Synthesizing computational analytics, campaign promotion, and disciplined leadership to build high-impact marketing initiatives.
             </p>
             <p className="text-xs text-accent-teal font-serif italic">
               &ldquo;{personalInfo.tagline}&rdquo;
@@ -44,7 +44,7 @@ export const Footer = () => {
                 01. About &amp; Profile
               </a>
               <a href="#approach" className="hover:text-canvas transition-colors py-1">
-                02. HR Approach
+                02. Marketing Approach
               </a>
               <a href="#journey" className="hover:text-canvas transition-colors py-1">
                 03. Journey Timeline

@@ -28,7 +28,7 @@ export const Hero = ({ onOpenResume }) => {
           className="flex items-center gap-2 text-ink-muted text-xs sm:text-sm tracking-widest-plus uppercase font-medium mb-6"
         >
           <span className="w-8 h-[1px] bg-accent-coral inline-block"></span>
-          <span>PEOPLE • LEADERSHIP • PERSPECTIVE</span>
+          <span>{personalInfo.role}</span>
           <span className="w-8 h-[1px] bg-accent-coral inline-block"></span>
         </motion.div>
 
@@ -41,14 +41,14 @@ export const Hero = ({ onOpenResume }) => {
         >
           Rishu Khatak —{' '}
           <span className="block mt-1 sm:mt-2">
-            Where People,{' '}
+            Where Brand,{' '}
             <span className="font-serif italic font-normal text-accent-coral">
-              Leadership &amp;
+              Campaigns &amp;
             </span>
           </span>
           <span className="block mt-1 sm:mt-2">
             <span className="font-serif italic font-normal text-accent-teal">
-              Analytical Thinking
+              Data Analytics
             </span>{' '}
             Meet.
           </span>

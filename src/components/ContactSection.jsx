@@ -43,7 +43,7 @@ export const ContactSection = ({ onNotify, onOpenResume }) => {
       <div className="max-w-2xl mb-16 relative z-10">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-teal-light border border-accent-teal/20 text-accent-teal-dark text-xs font-semibold uppercase tracking-wider mb-4">
           <span className="w-2 h-2 rounded-full bg-accent-teal inline-block"></span>
-          <span>OPEN TO HR OPPORTUNITIES</span>
+          <span>{personalInfo.availability.toUpperCase()}</span>
         </div>
         <h2 className="font-serif text-3xl sm:text-5xl font-semibold text-ink tracking-tight mb-4">
           {contactData.headline}
@@ -223,7 +223,7 @@ export const ContactSection = ({ onNotify, onOpenResume }) => {
             Initiate Direct Dialogue
           </h3>
           <p className="text-xs sm:text-sm text-ink-muted mb-8 leading-relaxed">
-            Inquiries regarding HR roles, campus talent opportunities, organizational initiatives, or academic dialogue.
+            Inquiries regarding marketing roles, brand campaigns, analytics projects, or strategic early-career opportunities.
           </p>
 
           {isSubmitted ? (

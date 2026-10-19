@@ -5,10 +5,10 @@ import { personalInfo } from '../data/portfolioData';
 
 const navItems = [
   { label: 'About', href: '#about' },
-  { label: 'HR Approach', href: '#approach' },
+  { label: 'Approach', href: '#approach' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Journey', href: '#journey' },
   { label: 'Leadership', href: '#leadership' },
-  { label: 'Projects', href: '#projects' },
   { label: 'Skills', href: '#skills' },
   { label: 'Education', href: '#education' },
   { label: 'Contact', href: '#contact' },

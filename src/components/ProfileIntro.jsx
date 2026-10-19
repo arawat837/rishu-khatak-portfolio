@@ -28,7 +28,7 @@ export const ProfileIntro = () => {
 
       {/* Two Column Narrative */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start mb-16 relative z-10">
-        {/* Left Column: Personal HR Perspective Statement Card */}
+        {/* Left Column: Personal Marketing Perspective Statement Card */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -41,15 +41,15 @@ export const ProfileIntro = () => {
             &ldquo;{editorialNarrative.quote}&rdquo;
           </blockquote>
           <p className="text-xs sm:text-sm text-ink-muted uppercase tracking-wider font-semibold font-mono">
-            Professional Focus • Human Resources
+            Professional Focus • Marketing &amp; Brand Strategy
           </p>
           <div className="mt-4 pt-4 border-t border-line/60 flex items-center justify-between text-xs text-ink-muted">
-            <span className="font-medium text-ink">UPES MBA (Human Resource)</span>
+            <span className="font-medium text-ink">UPES MBA (School of Business)</span>
             <span>DU B.Sc. (Hons.) CS</span>
           </div>
         </motion.div>
 
-        {/* Right Column: First-Person HR Narrative */}
+        {/* Right Column: First-Person Marketing Narrative */}
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}

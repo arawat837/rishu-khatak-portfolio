@@ -12,12 +12,14 @@ export const SkillsMatrix = () => {
 
   const getCategoryIcon = (category) => {
     switch (category) {
+      case 'marketing':
       case 'management':
         return <Users className="w-3.5 h-3.5 text-accent-coral" />;
-      case 'productivity':
-        return <FileSpreadsheet className="w-3.5 h-3.5 text-accent-teal" />;
+      case 'analytics':
       case 'technical':
         return <Code2 className="w-3.5 h-3.5 text-accent-coral" />;
+      case 'productivity':
+        return <FileSpreadsheet className="w-3.5 h-3.5 text-accent-teal" />;
       case 'languages':
         return <Globe className="w-3.5 h-3.5 text-accent-teal" />;
       default:
