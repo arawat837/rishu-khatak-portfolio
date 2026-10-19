@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { ArrowUp } from 'lucide-react';
 import { Navbar } from './components/Navbar';
 import { CustomCursor } from './components/CustomCursor';
@@ -17,6 +17,51 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { Toast } from './components/Toast';
 import { ResumeModal } from './components/ResumeModal';
+import { AmbientSakuraBackdrop } from './components/SakuraElements';
+
+/**
+ * Reusable scroll-aware section wrapper that creates a fluid, continuous
+ * scroll-in and scroll-out transition between sections ("pages").
+ */
+const SmoothSection = ({ children, className = '' }) => {
+  const sectionRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const rawOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.14, 0.86, 1],
+    [0.15, 1, 1, 0.15]
+  );
+  const rawY = useTransform(
+    scrollYProgress,
+    [0, 0.16, 0.84, 1],
+    [30, 0, 0, -30]
+  );
+
+  const opacity = useSpring(rawOpacity, {
+    stiffness: 110,
+    damping: 26,
+    mass: 0.4,
+  });
+  const y = useSpring(rawY, {
+    stiffness: 110,
+    damping: 26,
+    mass: 0.4,
+  });
+
+  return (
+    <motion.div
+      ref={sectionRef}
+      style={{ opacity, y }}
+      className={`relative will-change-transform ${className}`}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export function App() {
   const [toastMessage, setToastMessage] = useState(null);
@@ -49,7 +94,10 @@ export function App() {
   };
 
   return (
-    <div className="relative min-h-screen bg-canvas text-ink bg-grain selection:bg-accent-coral/20 selection:text-ink">
+    <div className="relative min-h-screen bg-canvas text-ink bg-grain selection:bg-accent-coral/20 selection:text-ink overflow-x-clip">
+      {/* Continuous Viewport-Wide Ambient Sakura Backdrop */}
+      <AmbientSakuraBackdrop />
+
       {/* Sleek Editorial Scroll Progress Bar */}
       <motion.div
         className="fixed top-0 left-0 right-0 h-[2.5px] bg-gradient-to-r from-accent-teal via-accent-coral to-accent-teal z-[60] origin-left pointer-events-none"
@@ -63,22 +111,40 @@ export function App() {
       <div id="top" />
       <Navbar onOpenResume={() => setIsResumeOpen(true)} />
 
-      {/* Main Content Sections with Natural Pacing */}
-      <main>
+      {/* Main Content Sections with Seamless Scroll-Driven Pacing */}
+      <main className="relative z-10">
         <Hero onOpenResume={() => setIsResumeOpen(true)} />
         <StatStrip />
-        <ProfileIntro />
-        <MarketingApproach />
-        <ProjectsShowcase />
-        <JourneyTimeline />
-        <LeadershipFeature />
-        <SkillsMatrix />
-        <EducationPedigree />
-        <BeyondResume />
-        <ContactSection
-          onNotify={showToast}
-          onOpenResume={() => setIsResumeOpen(true)}
-        />
+        <SmoothSection>
+          <ProfileIntro />
+        </SmoothSection>
+        <SmoothSection>
+          <MarketingApproach />
+        </SmoothSection>
+        <SmoothSection>
+          <ProjectsShowcase />
+        </SmoothSection>
+        <SmoothSection>
+          <JourneyTimeline />
+        </SmoothSection>
+        <SmoothSection>
+          <LeadershipFeature />
+        </SmoothSection>
+        <SmoothSection>
+          <SkillsMatrix />
+        </SmoothSection>
+        <SmoothSection>
+          <EducationPedigree />
+        </SmoothSection>
+        <SmoothSection>
+          <BeyondResume />
+        </SmoothSection>
+        <SmoothSection>
+          <ContactSection
+            onNotify={showToast}
+            onOpenResume={() => setIsResumeOpen(true)}
+          />
+        </SmoothSection>
       </main>
 
       {/* Dark Footer */}

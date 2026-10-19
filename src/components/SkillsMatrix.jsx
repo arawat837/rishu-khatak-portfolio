@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { skillsData } from '../data/portfolioData';
 import { Sparkles, Code2, Users, FileSpreadsheet, Globe } from 'lucide-react';
+import { SectionSakura } from './SakuraElements';
 
 export const SkillsMatrix = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -28,10 +29,23 @@ export const SkillsMatrix = () => {
   };
 
   return (
-    <section id="skills" className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-surface/50 border-t border-line">
-      <div className="max-w-6xl mx-auto">
+    <section
+      id="skills"
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-surface/70 to-transparent overflow-hidden"
+    >
+      {/* Decorative Layer: Sakura clusters & drifting petals in viewport margins */}
+      <SectionSakura position="left" type="cluster" className="top-12 opacity-75" />
+      <SectionSakura position="right" type="petals" className="bottom-16 opacity-70" />
+
+      <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
           <span className="text-xs sm:text-sm tracking-widest-plus uppercase text-accent-teal font-semibold">
             {skillsData.kicker}
           </span>
@@ -41,10 +55,17 @@ export const SkillsMatrix = () => {
           <p className="text-sm sm:text-base text-ink-muted leading-relaxed">
             {skillsData.subhead}
           </p>
-        </div>
+        </motion.div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12" role="tablist">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-wrap items-center justify-center gap-2 mb-12"
+          role="tablist"
+        >
           {skillsData.categories.map((cat) => {
             const isActive = activeTab === cat.id;
             return (
@@ -66,22 +87,23 @@ export const SkillsMatrix = () => {
               </button>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Filtered Grid */}
         <motion.div
           layout
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
         >
-          <AnimatePresence>
-            {filteredItems.map((item) => (
+          <AnimatePresence mode="popLayout">
+            {filteredItems.map((item, idx) => (
               <motion.div
                 layout
                 key={item.name}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: false, amount: 0.12 }}
                 exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.25 }}
+                transition={{ duration: 0.45, delay: (idx % 6) * 0.05, ease: [0.16, 1, 0.3, 1] }}
                 className="bg-surface border border-line p-5 sm:p-6 rounded-2xl shadow-soft hover:shadow-lift transition-all hover:border-ink/25 group flex flex-col justify-between"
               >
                 <div>

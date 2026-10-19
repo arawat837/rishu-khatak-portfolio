@@ -73,121 +73,125 @@ export const ProjectsShowcase = () => {
   return (
     <section
       id="projects"
-      className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto overflow-hidden"
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* Decorative Layer: Delicate Sakura petal drift */}
-      <SectionSakura position="left" type="petals" className="top-8 opacity-70" />
+      {/* Decorative Layer: Delicate Sakura compositions in viewport margins */}
+      <SectionSakura position="left" type="petals" className="top-12 opacity-75" />
+      <SectionSakura position="right" type="branch" className="top-1/3 opacity-70" />
+      <SectionSakura position="left" type="cluster" className="bottom-16 opacity-70" />
 
-      {/* Section Header */}
-      <div className="relative z-10 text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.5 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-line text-xs font-mono font-medium text-accent-coral mb-4 shadow-sm"
-        >
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>{projectsShowcaseData.kicker}</span>
-        </motion.div>
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Section Header */}
+        <div className="relative z-10 text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface border border-line text-xs font-mono font-medium text-accent-coral mb-4 shadow-sm"
+          >
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>{projectsShowcaseData.kicker}</span>
+          </motion.div>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="font-serif text-3xl sm:text-5xl font-semibold text-ink tracking-tight mb-4"
-        >
-          {projectsShowcaseData.headline}
-        </motion.h2>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.65, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
+            className="font-serif text-3xl sm:text-5xl font-semibold text-ink tracking-tight mb-4"
+          >
+            {projectsShowcaseData.headline}
+          </motion.h2>
 
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-sm sm:text-base text-ink-muted leading-relaxed"
-        >
-          {projectsShowcaseData.subhead}
-        </motion.p>
-      </div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.15 }}
+            transition={{ duration: 0.65, delay: 0.16, ease: [0.16, 1, 0.3, 1] }}
+            className="text-sm sm:text-base text-ink-muted leading-relaxed"
+          >
+            {projectsShowcaseData.subhead}
+          </motion.p>
+        </div>
 
-      {/* Interactive Controls Bar: Filter Tabs & Expand/Collapse */}
-      <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 pb-4 border-b border-line">
-        {/* Category Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-1.5 bg-surface/80 border border-line p-1.5 rounded-2xl shadow-soft">
-          {projectsShowcaseData.categories.map((cat) => {
-            const isActive = activeCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                type="button"
-                onClick={() => setActiveCategory(cat.id)}
-                className={`relative px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 flex items-center gap-2 ${
-                  isActive
-                    ? 'text-ink font-semibold'
-                    : 'text-ink-muted hover:text-ink hover:bg-canvas/60'
-                }`}
-              >
-                {isActive && (
-                  <motion.div
-                    layoutId="activeProjectTabIndicator"
-                    className="absolute inset-0 bg-canvas rounded-xl shadow-sm border border-line -z-10"
-                    transition={{ type: 'spring', stiffness: 400, damping: 32 }}
-                  />
-                )}
-                <span>{cat.label}</span>
-                <span
-                  className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+        {/* Interactive Controls Bar: Filter Tabs & Expand/Collapse */}
+        <div className="relative z-10 flex flex-col sm:flex-row items-center justify-between gap-4 mb-10 pb-4 border-b border-line">
+          {/* Category Filter Tabs */}
+          <div className="flex flex-wrap items-center justify-center gap-1.5 bg-surface/80 border border-line p-1.5 rounded-2xl shadow-soft">
+            {projectsShowcaseData.categories.map((cat) => {
+              const isActive = activeCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  type="button"
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`relative px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all duration-200 flex items-center gap-2 ${
                     isActive
-                      ? 'bg-ink text-canvas'
-                      : 'bg-canvas text-ink-muted border border-line/60'
+                      ? 'text-ink font-semibold'
+                      : 'text-ink-muted hover:text-ink hover:bg-canvas/60'
                   }`}
                 >
-                  {cat.count}
-                </span>
-              </button>
-            );
-          })}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeProjectTabIndicator"
+                      className="absolute inset-0 bg-canvas rounded-xl shadow-sm border border-line -z-10"
+                      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+                    />
+                  )}
+                  <span>{cat.label}</span>
+                  <span
+                    className={`text-[10px] font-mono px-1.5 py-0.2 rounded-full ${
+                      isActive
+                        ? 'bg-ink text-canvas'
+                        : 'bg-canvas text-ink-muted border border-line/60'
+                    }`}
+                  >
+                    {cat.count}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Global Expand / Collapse Trigger */}
+          <div className="flex items-center gap-2 text-xs font-mono text-ink-muted">
+            <button
+              type="button"
+              onClick={expandAll}
+              className="hover:text-accent-teal transition-colors underline decoration-line/80 underline-offset-4"
+            >
+              Expand All Details
+            </button>
+            <span>•</span>
+            <button
+              type="button"
+              onClick={collapseAll}
+              className="hover:text-accent-coral transition-colors underline decoration-line/80 underline-offset-4"
+            >
+              Compact View
+            </button>
+          </div>
         </div>
 
-        {/* Global Expand / Collapse Trigger */}
-        <div className="flex items-center gap-2 text-xs font-mono text-ink-muted">
-          <button
-            type="button"
-            onClick={expandAll}
-            className="hover:text-accent-teal transition-colors underline decoration-line/80 underline-offset-4"
-          >
-            Expand All Details
-          </button>
-          <span>•</span>
-          <button
-            type="button"
-            onClick={collapseAll}
-            className="hover:text-accent-coral transition-colors underline decoration-line/80 underline-offset-4"
-          >
-            Compact View
-          </button>
-        </div>
-      </div>
+        {/* Project Cards List */}
+        <div className="relative z-10 space-y-8">
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((project, index) => {
+              const isExpanded = !!expandedProjects[project.id];
+              const isTeal = project.accent === 'teal';
 
-      {/* Project Cards List */}
-      <div className="relative z-10 space-y-8">
-        <AnimatePresence mode="popLayout">
-          {filteredProjects.map((project, index) => {
-            const isExpanded = !!expandedProjects[project.id];
-            const isTeal = project.accent === 'teal';
-
-            return (
-              <motion.article
-                key={project.id}
-                layout
-                initial={{ opacity: 0, y: 24 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.98 }}
-                transition={{ duration: 0.45, delay: index * 0.08 }}
-                className="bg-surface border border-line rounded-3xl p-6 sm:p-10 shadow-soft hover:shadow-lift transition-all duration-300 relative overflow-hidden group"
-              >
+              return (
+                <motion.article
+                  key={project.id}
+                  layout
+                  initial={{ opacity: 0, y: 28 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: false, amount: 0.12 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.55, delay: index * 0.08, ease: [0.16, 1, 0.3, 1] }}
+                  className="bg-surface border border-line rounded-3xl p-6 sm:p-10 shadow-soft hover:shadow-lift transition-all duration-300 relative overflow-hidden group"
+                >
                 {/* Header Ribbon: Category, Number & Period */}
                 <div className="flex flex-wrap items-center justify-between gap-3 mb-6">
                   <div className="flex items-center gap-2">
@@ -410,6 +414,7 @@ export const ProjectsShowcase = () => {
             );
           })}
         </AnimatePresence>
+        </div>
       </div>
     </section>
   );

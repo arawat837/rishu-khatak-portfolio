@@ -19,13 +19,20 @@ export const BeyondResume = () => {
   ];
 
   return (
-    <section className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-surface/50 border-t border-line overflow-hidden">
-      {/* Subtle Sakura bloom accent on right */}
-      <SectionSakura position="right" type="bloom" className="top-12 opacity-60" />
+    <section className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-surface/70 to-transparent overflow-hidden">
+      {/* Subtle Sakura flower & cluster accents in viewport margins */}
+      <SectionSakura position="right" type="flower" className="top-12 opacity-75" />
+      <SectionSakura position="left" type="cluster" className="bottom-12 opacity-70" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
+        >
           <div>
             <span className="text-xs sm:text-sm tracking-widest-plus uppercase text-accent-teal font-semibold">
               {beyondResumeData.kicker}
@@ -37,17 +44,17 @@ export const BeyondResume = () => {
           <p className="text-sm sm:text-base text-ink-muted max-w-md font-normal leading-relaxed">
             {beyondResumeData.subhead}
           </p>
-        </div>
+        </motion.div>
 
         {/* Sports & Extracurriculars Highlights */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
           {beyondResumeData.sports.map((item, idx) => (
             <motion.div
               key={item.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: false, amount: 0.15 }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="bg-surface border border-line p-6 rounded-2xl shadow-soft hover:shadow-lift transition-all hover:border-ink/20 flex flex-col justify-between"
             >
               <div>
@@ -74,7 +81,13 @@ export const BeyondResume = () => {
         </div>
 
         {/* Interests Grid */}
-        <div className="p-8 rounded-2xl bg-surface border border-line shadow-soft">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, delay: 0.12, ease: [0.16, 1, 0.3, 1] }}
+          className="p-8 rounded-2xl bg-surface border border-line shadow-soft"
+        >
           <div className="flex items-center gap-2 mb-6">
             <span className="text-xs font-mono uppercase tracking-widest text-ink-muted font-bold">
               Personal Pursuits &amp; Mindset:
@@ -106,7 +119,7 @@ export const BeyondResume = () => {
               </div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

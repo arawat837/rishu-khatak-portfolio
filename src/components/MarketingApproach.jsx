@@ -32,8 +32,8 @@ export const MarketingApproach = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.55,
-        ease: [0.21, 0.47, 0.32, 0.98],
+        duration: 0.6,
+        ease: [0.16, 1, 0.3, 1],
       },
     },
   };
@@ -41,18 +41,19 @@ export const MarketingApproach = () => {
   return (
     <section
       id="approach"
-      className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-surface/50 border-t border-line overflow-hidden"
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-surface/70 to-transparent overflow-hidden"
     >
-      {/* Decorative Layer: Delicate Sakura line art in right margin */}
-      <SectionSakura position="right" type="line-art" className="top-12 opacity-60" />
+      {/* Decorative Layer: Delicate Sakura compositions in right and bottom-left margins */}
+      <SectionSakura position="right" type="line-art" className="top-12 opacity-75" />
+      <SectionSakura position="left" type="cluster" className="bottom-10 opacity-70" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-canvas border border-line text-xs font-mono font-medium text-accent-coral mb-4 shadow-sm">
@@ -74,7 +75,7 @@ export const MarketingApproach = () => {
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, margin: '-50px' }}
+          viewport={{ once: false, amount: 0.15 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-20 mb-14"
         >
           {marketingApproachData.pillars.map((pillar, idx) => {
@@ -150,8 +151,8 @@ export const MarketingApproach = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-40px' }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="bg-canvas border border-line rounded-2xl p-6 sm:p-8 shadow-soft flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden"
         >
           <div className="max-w-2xl">

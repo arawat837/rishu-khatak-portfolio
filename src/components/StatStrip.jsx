@@ -4,16 +4,16 @@ import { statistics } from '../data/portfolioData';
 
 export const StatStrip = () => {
   return (
-    <section className="relative z-10 border-y border-line bg-surface/60 py-10 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 divide-y md:divide-y-0 md:divide-x divide-line">
+    <section className="relative z-10 bg-gradient-to-b from-transparent via-surface/70 to-transparent py-10 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto bg-surface/80 backdrop-blur-sm border border-line/70 rounded-3xl p-6 sm:p-8 shadow-soft">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6 divide-y md:divide-y-0 md:divide-x divide-line/70">
           {statistics.map((stat, idx) => (
             <motion.div
               key={stat.label}
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-50px' }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
+              viewport={{ once: false, amount: 0.15 }}
+              transition={{ duration: 0.55, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
               className={`flex flex-col items-start ${idx > 0 ? 'pt-6 md:pt-0 md:pl-6' : ''}`}
             >
               <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-ink tracking-tight mb-1">

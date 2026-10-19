@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ChevronDown, GraduationCap, Shield, FileText } from 'lucide-react';
 import { personalInfo, heroBadges } from '../data/portfolioData';
-import { HeroSakura } from './SakuraElements';
+import { HeroSakura, SectionSakura } from './SakuraElements';
 
 export const Hero = ({ onOpenResume }) => {
   const badgeIcons = [
@@ -16,15 +16,17 @@ export const Hero = ({ onOpenResume }) => {
       id="about"
       className="relative min-h-[90vh] sm:min-h-screen flex flex-col justify-center pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
     >
-      {/* Subtle Scroll-Triggered Sakura Branch (Top Right) */}
+      {/* Subtle Scroll-Triggered Sakura Branch (Top Right) & Drifting Petals (Bottom Left) */}
       <HeroSakura />
+      <SectionSakura position="left" type="petals" className="bottom-16 opacity-65" />
 
       <div className="max-w-5xl mx-auto w-full relative z-10 flex flex-col items-start">
         {/* Editorial Top Kicker */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           className="flex items-center gap-2 text-ink-muted text-xs sm:text-sm tracking-widest-plus uppercase font-medium mb-6"
         >
           <span className="w-8 h-[1px] bg-accent-coral inline-block"></span>
@@ -35,8 +37,9 @@ export const Hero = ({ onOpenResume }) => {
         {/* Large Editorial Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.1, ease: 'easeOut' }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.75, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
           className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight text-ink font-semibold leading-[1.08] sm:leading-[1.05] mb-8"
         >
           Rishu Khatak —{' '}
@@ -57,8 +60,9 @@ export const Hero = ({ onOpenResume }) => {
         {/* Credential Badges Strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.25, ease: 'easeOut' }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, delay: 0.18, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-wrap items-center gap-2.5 sm:gap-3 mb-8"
         >
           {heroBadges.map((badge, idx) => (
@@ -77,8 +81,9 @@ export const Hero = ({ onOpenResume }) => {
         {/* First-Person Positioning Statement */}
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.35, ease: 'easeOut' }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, delay: 0.26, ease: [0.16, 1, 0.3, 1] }}
           className="text-base sm:text-lg md:text-xl text-ink-muted max-w-3xl leading-relaxed font-normal mb-10"
         >
           {personalInfo.bio}
@@ -87,8 +92,9 @@ export const Hero = ({ onOpenResume }) => {
         {/* Hero Actions */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.45, ease: 'easeOut' }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, delay: 0.34, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto"
         >
           <a
@@ -124,7 +130,7 @@ export const Hero = ({ onOpenResume }) => {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.8 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
         className="mt-16 sm:mt-24 flex flex-col items-center justify-center text-ink-muted text-[11px] tracking-widest-plus uppercase font-medium relative z-10"
       >
         <span className="mb-2">EXPLORE MY JOURNEY</span>

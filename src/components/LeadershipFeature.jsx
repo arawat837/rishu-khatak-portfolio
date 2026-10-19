@@ -15,13 +15,23 @@ export const LeadershipFeature = () => {
   };
 
   return (
-    <section id="leadership" className="relative py-20 sm:py-28 px-4 sm:px-6 lg:px-8 bg-surface/60 border-t border-line overflow-hidden">
-      {/* Decorative Layer: Safe Zone in right margin */}
-      <SectionSakura position="right" type="flower" className="top-12 opacity-50" />
+    <section
+      id="leadership"
+      className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-surface/70 to-transparent overflow-hidden"
+    >
+      {/* Decorative Layer: Safe Zones in right & bottom-left margins */}
+      <SectionSakura position="right" type="flower" className="top-12 opacity-70" />
+      <SectionSakura position="left" type="petals" className="bottom-12 opacity-70" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14"
+        >
           <div>
             <span className="text-xs sm:text-sm tracking-widest-plus uppercase text-accent-coral font-semibold font-mono">
               {leadershipData.kicker}
@@ -33,14 +43,14 @@ export const LeadershipFeature = () => {
           <p className="text-sm sm:text-base text-ink-muted max-w-md font-normal leading-relaxed">
             {leadershipData.subhead}
           </p>
-        </div>
+        </motion.div>
 
         {/* Feature Hero Card */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-50px' }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: false, amount: 0.15 }}
+          transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
           className="bg-surface border border-line p-8 sm:p-10 rounded-3xl shadow-lift mb-12 relative z-20 overflow-hidden"
         >
           {/* Header Metadata */}
@@ -81,10 +91,10 @@ export const LeadershipFeature = () => {
             {leadershipData.pillars.map((item, idx) => (
               <motion.div
                 key={item.title}
-                initial={{ opacity: 0, y: 15 }}
+                initial={{ opacity: 0, y: 18 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                viewport={{ once: false, amount: 0.15 }}
+                transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
                 className="p-5 rounded-2xl bg-canvas border border-line/80 hover:border-ink/20 transition-colors"
               >
                 <div className="flex items-center gap-3 mb-2.5">
